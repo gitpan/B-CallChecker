@@ -1,0 +1,38 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 bb15db376e5e1e469434c83bafcb367dd49ddc5e .cvsignore
+SHA1 478e9a2d3c44bb10a84e1502ebd317088270fdfb Build.PL
+SHA1 febea49f4f12c96b13f5bdb528c11094ca8541be Changes
+SHA1 775d0cd539a0583bd1514d3a5922f5e428400979 MANIFEST
+SHA1 ca8baf0fb826e445952c8d2f599c1b6f0a7d1c85 META.json
+SHA1 47d9f797ef3155dc6e369850adbf970fd52c1b84 META.yml
+SHA1 ea8fb6dc400b0648137c56c063a30fecfb5643f7 Makefile.PL
+SHA1 c758ff7541d9a97645cb51faae7e3565c7d90b0e README
+SHA1 c8118394962689df074cf0f9a91e6d6abfbbb71d lib/B/.cvsignore
+SHA1 4fedffd3ac7fb46e6470f837b755d4e2d76fffb8 lib/B/CallChecker.pm
+SHA1 95edccb27496c93dc6f515c1c6e0dfbc242a966b lib/B/CallChecker.xs
+SHA1 e8e5750a83bd5f2f1a09ccd6974cfc7bffd5bebd t/callck.t
+SHA1 904d9a4f76525e2303e4b0c168c68230f223c8de t/pod_cvg.t
+SHA1 65c75abdef6f01a5d1588a307f2ddfe2333dc961 t/pod_syn.t
+SHA1 12e8774e50f3b9fdf08f70a0728985aa08ac054a typemap
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iEYEARECAAYFAk35GSEACgkQOV9mt2VyAVHLEACfTWiDk4+K29wQblllENeCMdy2
+4pwAn3cuBNCtoiILX5g8sgAQFKsAFRIZ
+=nysh
+-----END PGP SIGNATURE-----
