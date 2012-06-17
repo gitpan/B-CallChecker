@@ -47,7 +47,6 @@ Module::Build->subclass(code => q{
 	}
 })->new(
 	module_name => "B::CallChecker",
-	dist_version => "0.000",
 	license => "perl",
 	configure_requires => {
 		"Module::Build" => 0,

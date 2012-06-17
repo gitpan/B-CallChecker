@@ -1,7 +1,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 46;
+use Test::More tests => 61;
 
 BEGIN {
 	use_ok "B::CallChecker", qw(
@@ -83,10 +83,10 @@ ok $ckfun == \&ck_entersub_args_proto_or_list;
 ok $ckobj == \&bar;
 
 eval { cv_set_call_checker("a", \&ckfun_scalars, {a=>1}) };
-like $@, qr/is not a (?:code|CODE) reference/;
+like $@, qr/(?:is n|N)ot a (?:code|CODE|subroutine) reference/;
 
 eval { cv_set_call_checker(\"a", \&ckfun_scalars, {a=>1}) };
-like $@, qr/is not a (?:code|CODE) reference/;
+like $@, qr/(?:is n|N)ot a (?:code|CODE|subroutine) reference/;
 
 eval { cv_set_call_checker(\&foo, \&ckfun_scalars, "a") };
 like $@, qr/is not a reference/;
@@ -113,5 +113,32 @@ is scalar(@{[cv_get_call_checker(\&foo)]}), 2;
 ($ckfun, $ckobj) = cv_get_call_checker(\&foo);
 ok $ckfun == \&ckfun_lists;
 ok $ckobj == \&foo;
+
+cv_set_call_checker(\&foo, \&ckfun_lists, \!1);
+ok 1;
+
+is_deeply scalar(eval(q{foo(@b, @c)})), [ qw(a b a b c) ];
+is scalar(@{[cv_get_call_checker(\&foo)]}), 2;
+($ckfun, $ckobj) = cv_get_call_checker(\&foo);
+ok $ckfun == \&ckfun_lists;
+ok $ckobj == \!1;
+
+cv_set_call_checker(\&foo, \&ckfun_lists, \!0);
+ok 1;
+
+is_deeply scalar(eval(q{foo(@b, @c)})), [ qw(a b a b c) ];
+is scalar(@{[cv_get_call_checker(\&foo)]}), 2;
+($ckfun, $ckobj) = cv_get_call_checker(\&foo);
+ok $ckfun == \&ckfun_lists;
+ok $ckobj == \!0;
+
+cv_set_call_checker(\&foo, \&ckfun_lists, \undef);
+ok 1;
+
+is_deeply scalar(eval(q{foo(@b, @c)})), [ qw(a b a b c) ];
+is scalar(@{[cv_get_call_checker(\&foo)]}), 2;
+($ckfun, $ckobj) = cv_get_call_checker(\&foo);
+ok $ckfun == \&ckfun_lists;
+ok $ckobj == \undef;
 
 1;

@@ -17,7 +17,7 @@ configure_requires:
   strict: 0
   warnings: 0
 dynamic_config: 0
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110440'
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -26,7 +26,7 @@ name: B-CallChecker
 provides:
   B::CallChecker:
     file: lib/B/CallChecker.pm
-    version: 0
+    version: 0.001
 requires:
   B: 0
   Devel::CallChecker: 0.003
@@ -38,4 +38,4 @@ requires:
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.000
+version: 0.001

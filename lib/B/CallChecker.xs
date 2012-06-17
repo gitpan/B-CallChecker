@@ -32,6 +32,10 @@
 # define PERL_UNUSED_ARG(x) PERL_UNUSED_VAR(x)
 #endif /* !PERL_UNUSED_ARG */
 
+#ifndef Newx
+# define Newx(v,n,t) New(0,v,n,t)
+#endif /* !Newx */
+
 #ifndef ptr_table_new
 
 struct q_ptr_tbl_ent {
@@ -243,6 +247,7 @@ static bool THX_ckfun_c_is_encoded_perl(pTHX_ Perl_call_checker cckfun)
 static void THX_ckfun_decode_perl_as_c(pTHX_
 	Perl_call_checker cckfun, SV *cckobj, CV **ckfun_p, SV **ckobj_p)
 {
+	SV **valp;
 	PERL_UNUSED_ARG(cckfun);
 	if(SvTYPE(cckobj) != SVt_PVAV || av_len((AV*)cckobj) != 1) {
 		bad_args:
@@ -250,7 +255,8 @@ static void THX_ckfun_decode_perl_as_c(pTHX_
 	}
 	*ckfun_p = (CV*)*av_fetch((AV*)cckobj, 0, 0);
 	if(SvTYPE((SV*)*ckfun_p) != SVt_PVCV) goto bad_args;
-	*ckobj_p = *av_fetch((AV*)cckobj, 1, 0);
+	valp = av_fetch((AV*)cckobj, 1, 0);
+	*ckobj_p = valp ? *valp : &PL_sv_undef;
 }
 
 static OP *cckfun_perl_ckfun(pTHX_ OP *entersubop, GV *namegv, SV *cckobj)

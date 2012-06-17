@@ -1,4 +1,4 @@
-.cvsignore
+.gitignore
 Build.PL
 Changes
 MANIFEST
@@ -6,7 +6,6 @@ META.json
 META.yml
 Makefile.PL
 README
-lib/B/.cvsignore
 lib/B/CallChecker.pm
 lib/B/CallChecker.xs
 t/callck.t

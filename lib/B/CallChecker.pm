@@ -70,7 +70,7 @@ use B ();
 use Devel::CallChecker 0.003 ();
 use XSLoader;
 
-our $VERSION = "0.000";
+our $VERSION = "0.001";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -145,7 +145,7 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2011 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2011, 2012 Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE
 
